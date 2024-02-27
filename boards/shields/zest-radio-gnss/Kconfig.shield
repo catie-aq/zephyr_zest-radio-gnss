@@ -2,4 +2,4 @@
 # SPDX-License-Identifier: Apache-2.0
 
 config SHIELD_ZEST_RADIO_GNSS
-	def_bool $(shields_list_contains,zest_sensor_gnss)
+	def_bool $(shields_list_contains,zest_radio_gnss)
