@@ -1,0 +1,23 @@
+/*
+ * Copyright (c) 2024 CATIE
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+#include <zephyr/dt-bindings/gpio/sixtron-header.h>
+
+/ {
+    aliases{
+        gnss = &gnss;
+    };
+};
+
+&sixtron_uart {
+	status = "okay";
+	current-speed = <9600>;
+	gnss: gnss {
+		compatible = "quectel,lc86g";
+        pps-mode = "GNSS_PPS_MODE_DISABLED";
+		status = "okay";
+	};
+};
