@@ -5,9 +5,9 @@
  */
 
 / {
-    aliases{
-        gnss = &l86_zest_radio_gnss;
-    };
+	aliases{
+		gnss = &l86_zest_radio_gnss;
+	};
 };
 
 &sixtron_uart {
@@ -15,7 +15,7 @@
 	current-speed = <9600>;
 	l86_zest_radio_gnss: gnss {
 		compatible = "quectel,lc86g";
-        pps-mode = "GNSS_PPS_MODE_DISABLED";
+		pps-mode = "GNSS_PPS_MODE_DISABLED";
 		status = "okay";
 	};
 };
