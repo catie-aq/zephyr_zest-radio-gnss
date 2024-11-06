@@ -13,9 +13,10 @@
 &sixtron_uart {
 	status = "okay";
 	current-speed = <9600>;
-	l86_zest_radio_gnss: gnss {
-		compatible = "quectel,lc86g";
+	l86_zest_radio_gnss: l86 {
+		compatible = "quectel,l86";
 		pps-mode = "GNSS_PPS_MODE_DISABLED";
 		status = "okay";
+		// zephyr,deferred-init;
 	};
 };
