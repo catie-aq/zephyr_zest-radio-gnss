@@ -11,7 +11,7 @@
 	&uart_zest_radio_gnss_##port { \
 		status = "okay"; \
 		current-speed = <9600>; \
-		l86_##port##_zest_radio_gnss_##port: gnss_##port { \
+		l86_zest_radio_gnss_##port: gnss_##port { \
 			compatible = "quectel,l86"; \
 			status = "okay"; \
 			pps-mode = "GNSS_PPS_MODE_DISABLED"; \
