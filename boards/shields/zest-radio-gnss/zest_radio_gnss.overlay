@@ -4,18 +4,28 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-/ {
-	aliases{
-		gnss = &l86_zest_radio_gnss;
-	};
-};
+#define PERIPHERAL_ZEST_RADIO_GNSS(port) \
+	uart_zest_radio_gnss_##port: &sixtron_connector_##port##_uart {};
 
-&sixtron_uart {
-	status = "okay";
-	current-speed = <9600>;
-	l86_zest_radio_gnss: gnss {
-		compatible = "quectel,l86";
-		pps-mode = "GNSS_PPS_MODE_DISABLED";
-		status = "okay";
+#define DRIVERS_ZEST_RADIO_GNSS(port) \
+	&uart_zest_radio_gnss_##port { \
+		status = "okay"; \
+		current-speed = <9600>; \
+		l86_zest_radio_gnss_##port: gnss_##port { \
+			compatible = "quectel,l86"; \
+			status = "okay"; \
+			pps-mode = "GNSS_PPS_MODE_DISABLED"; \
+		}; \
 	};
-};
+
+#define ALIASES_ZEST_RADIO_GNSS(port) \
+	/ { \
+		aliases{ \
+			gnss_##port = &l86_zest_radio_gnss_##port; \
+		}; \
+	};
+
+#define ZEST_RADIO_GNSS(port) \
+	PERIPHERAL_ZEST_RADIO_GNSS(port) \
+	DRIVERS_ZEST_RADIO_GNSS(port) \
+	ALIASES_ZEST_RADIO_GNSS(port)
