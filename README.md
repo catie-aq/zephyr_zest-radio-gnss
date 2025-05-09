@@ -10,8 +10,19 @@ This board enables the following component:
 
 💡 This driver should also be added to your workspace:
 
-- [Quectel L86 driver](https://github.com/catie-aq/zephyr_quectel-l86) for Zephyr-OS
+- [Quectel L86 driver](https://github.com/catie-aq/zephyr_quectel-l86)
 
-> [!NOTE]
-> The node label for the L86 component is `l86_zest_radio_gnss`. \
-> Shield name: `zest_radio_gnss`.
+:pushpin: This shield defines:
+
+- the GNSS module device: `l86_X_zest_radio_gnss_<X>`
+
+:triangular_ruler: To use this shield:
+
+- Update your device tree by adding the `ZEST_RADIO_GNSS(port)` macro to the `app.overlay` file.\
+  Replace `port` with the number of the Zest_Core port to which the shield is connected, e.g.:
+
+  ```c
+  ZEST_RADIO_GNSS(1) /* Zest_Radio_GNSS connected to Zest_Core first port */
+  ```
+
+- Activate support for the shield by adding `--shield zest_radio_gnss` to the west command.
